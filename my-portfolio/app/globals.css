@@ -24,32 +24,30 @@ html, body {
 }
 
 /* ===== SHOOTING STAR ===== */
+/* ⭐ sao luôn nằm NGANG: trái -> phải */
 .shooting-star {
   position: absolute;
   width: 160px;
   height: 2px;
 
-  /* ⭐ ĐẦU SAO Ở PHẢI – ĐUÔI Ở TRÁI */
+  /* ĐẦU SAO Ở PHẢI */
   background: linear-gradient(
-    -90deg,
-    rgba(120,170,255,1),
-    rgba(120,170,255,0)
+    to right,
+    rgba(120,170,255,0),
+    rgba(120,170,255,1)
   );
 
   border-radius: 999px;
-  filter: drop-shadow(0 0 6px rgba(120,170,255,0.9));
+  filter: drop-shadow(0 0 8px rgba(120,170,255,0.9));
   opacity: 0;
-
-  /* góc bay */
-  transform: rotate(-35deg);
 
   animation: shoot 4s linear infinite;
 }
 
-/* ===== ANIMATION ===== */
+/* ===== DI CHUYỂN: TỪ TRÊN → XUỐNG, XÉO PHẢI ===== */
 @keyframes shoot {
   0% {
-    transform: translate(-30vw, -30vh) rotate(-35deg);
+    transform: translate(-30vw, -30vh);
     opacity: 0;
   }
 
@@ -58,7 +56,7 @@ html, body {
   }
 
   100% {
-    transform: translate(120vw, 120vh) rotate(-35deg);
+    transform: translate(120vw, 120vh);
     opacity: 0;
   }
 }
@@ -73,23 +71,23 @@ html, body {
 .shooting-star:nth-child(2) {
   top: -10%;
   left: 40%;
-  animation-delay: 1.2s;
+  animation-delay: 1.3s;
 }
 
 .shooting-star:nth-child(3) {
   top: -20%;
   left: 70%;
-  animation-delay: 2.4s;
+  animation-delay: 2.6s;
 }
 
 .shooting-star:nth-child(4) {
   top: 20%;
-  left: -15%;
+  left: -20%;
   animation-delay: 1.8s;
 }
 
 .shooting-star:nth-child(5) {
   top: 40%;
-  left: -10%;
-  animation-delay: 3s;
+  left: -15%;
+  animation-delay: 3.2s;
 }
