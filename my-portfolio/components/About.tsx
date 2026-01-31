@@ -17,7 +17,7 @@ export default function About() {
           </h2>
 
           <h3 className="text-2xl font-bold mb-3">
-            Your Name
+            Luu Tan Loc / ShikoFT
           </h3>
 
           <p className="text-gray-600 leading-relaxed mb-6">
@@ -26,7 +26,7 @@ export default function About() {
           </p>
 
           <div className="flex gap-4">
-            {["Facebook", "Youtube", "Pixiv"].map((item) => (
+            {["Facebook", "Youtube", "Tik Tok"].map((item) => (
               <button
                 key={item}
                 className="
@@ -60,3 +60,4 @@ export default function About() {
     </section>
   );
 }
+
