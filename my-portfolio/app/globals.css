@@ -5,8 +5,8 @@
 body {
   color: white;
 }
-/* === SHOOTING STAR BACKGROUND === */
-/* ===== SHOOTING STAR BACKGROUND (FULL SCREEN) ===== */
+
+/* ===== SHOOTING STAR BACKGROUND ===== */
 .stars-bg {
   position: fixed;
   inset: 0;
@@ -17,7 +17,7 @@ body {
 
 .shooting-star {
   position: absolute;
-  width: 120px;
+  width: 140px;
   height: 2px;
   background: linear-gradient(
     90deg,
@@ -26,56 +26,21 @@ body {
   );
   border-radius: 999px;
   filter: drop-shadow(0 0 6px rgba(120, 170, 255, 0.8));
-  animation: shoot 3s linear infinite;
-  transform: rotate(-35deg);
   opacity: 0;
+  transform: rotate(-35deg);
+  animation: shoot 3.2s linear infinite;
 }
 
-/* animation */
 @keyframes shoot {
   0% {
-    transform: translateX(0) translateY(0) rotate(-35deg);
+    transform: translate(0, 0) rotate(-35deg);
     opacity: 0;
   }
   10% {
     opacity: 1;
   }
   100% {
-    transform: translateX(600px) translateY(600px) rotate(-35deg);
+    transform: translate(700px, 700px) rotate(-35deg);
     opacity: 0;
   }
 }
-
-/* random positions + delay */
-.shooting_star:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
-.shooting_star:nth-child(2) { top: 40%; left: 60%; animation-delay: 1s; }
-.shooting_star:nth-child(3) { top: 10%; left: 80%; animation-delay: 2s; }
-.shooting_star:nth-child(4) { top: 70%; left: 20%; animation-delay: 1.5s; }
-.shooting_star:nth-child(5) { top: 50%; left: 50%; animation-delay: 2.5s; }
-.shooting_star:nth-child(6) { top: 30%; left: 10%; animation-delay: 0.8s; }
-.shooting_star:nth-child(7) { top: 60%; left: 75%; animation-delay: 1.2s; }
-.shooting_star:nth-child(8) { top: 15%; left: 45%; animation-delay: 2.8s; }
-.shooting_star:nth-child(9) { top: 80%; left: 35%; animation-delay: 1.8s; }
-.shooting_star:nth-child(10){ top: 25%; left: 65%; animation-delay: 0.5s; }
-
-/* animations */
-@keyframes tail {
-  0% { width: 0; }
-  30% { width: 100px; }
-  100% { width: 0; }
-}
-
-@keyframes shining {
-  0% { width: 0; }
-  50% { width: 30px; }
-  100% { width: 0; }
-}
-
-@keyframes shooting {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(300px); }
-}
-
-
-
-
