@@ -2,67 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== RESET ===== */
+/* reset */
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 100%;
-  color: white;
   background: #090a0f;
+  color: white;
 }
 
-/* ===== SHOOTING STAR BACKGROUND ===== */
+/* ===== BACKGROUND ===== */
 .stars-bg {
   position: fixed;
   inset: 0;
-  z-index: -10;
-  pointer-events: none;
+  z-index: -1;
   overflow: hidden;
   background: radial-gradient(
     ellipse at bottom,
     #1b2735 0%,
-    #090a0f 70%
+    #090a0f 100%
   );
 }
 
-/* ===== STAR ===== */
+/* ===== SHOOTING STAR ===== */
 .shooting-star {
   position: absolute;
   width: 160px;
   height: 2px;
+
+  /* ⭐ ĐẦU SAO Ở PHẢI – ĐUÔI Ở TRÁI */
   background: linear-gradient(
-    90deg,
+    -90deg,
     rgba(120,170,255,1),
     rgba(120,170,255,0)
   );
+
   border-radius: 999px;
-  filter: drop-shadow(0 0 8px rgba(120,170,255,0.9));
+  filter: drop-shadow(0 0 6px rgba(120,170,255,0.9));
   opacity: 0;
+
+  /* góc bay */
   transform: rotate(-35deg);
+
   animation: shoot 4s linear infinite;
 }
 
 /* ===== ANIMATION ===== */
 @keyframes shoot {
   0% {
-    transform: translate(-300px, -300px) rotate(-35deg);
+    transform: translate(-30vw, -30vh) rotate(-35deg);
     opacity: 0;
   }
-  15% {
+
+  10% {
     opacity: 1;
   }
+
   100% {
-    transform: translate(1000px, 1000px) rotate(-35deg);
+    transform: translate(120vw, 120vh) rotate(-35deg);
     opacity: 0;
   }
 }
 
-/* ===== RANDOM POSITIONS ===== */
-.shooting-star:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
-.shooting-star:nth-child(2) { top: 25%; left: 70%; animation-delay: 1s; }
-.shooting-star:nth-child(3) { top: 40%; left: 50%; animation-delay: 2s; }
-.shooting-star:nth-child(4) { top: 60%; left: 15%; animation-delay: 1.5s; }
-.shooting-star:nth-child(5) { top: 75%; left: 80%; animation-delay: 2.5s; }
-.shooting-star:nth-child(6) { top: 20%; left: 90%; animation-delay: 0.8s; }
-.shooting-star:nth-child(7) { top: 55%; left: 60%; animation-delay: 1.2s; }
-.shooting-star:nth-child(8) { top: 15%; left: 40%; animation-delay: 2.8s; }
+/* ===== SPAWN ===== */
+.shooting-star:nth-child(1) {
+  top: 0%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shooting-star:nth-child(2) {
+  top: -10%;
+  left: 40%;
+  animation-delay: 1.2s;
+}
+
+.shooting-star:nth-child(3) {
+  top: -20%;
+  left: 70%;
+  animation-delay: 2.4s;
+}
+
+.shooting-star:nth-child(4) {
+  top: 20%;
+  left: -15%;
+  animation-delay: 1.8s;
+}
+
+.shooting-star:nth-child(5) {
+  top: 40%;
+  left: -10%;
+  animation-delay: 3s;
+}
