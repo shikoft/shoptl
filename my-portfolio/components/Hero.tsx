@@ -10,12 +10,13 @@ export default function Hero() {
         transition={{ duration: 1 }}
       >
         <h1 className="text-5xl font-bold mb-4">
-          Xin chào, tôi là <span className="text-primary">Your Name</span>
+          Luu Tan Loc<span className="text-primary">SHIKOFT</span>
         </h1>
         <p className="text-gray-400 text-xl">
-          Web Developer • Designer • Creator
+          Web Developer • Game Developer • Creator
         </p>
       </motion.div>
     </section>
   );
 }
+
