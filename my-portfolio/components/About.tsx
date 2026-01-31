@@ -63,22 +63,37 @@ export default function About() {
 
         {/* AVATAR */}
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.85, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6 }}
           className="flex justify-center"
         >
-          <img
-            src="/avatar.png"
-            alt="Avatar"
-            className="w-64 h-64 rounded-full border-4 border-primary"
-          />
+          <motion.div
+            whileHover={{ scale: 1.08 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+            className="
+              w-64 h-64 rounded-full
+              p-1
+              bg-primary
+              cursor-pointer
+            "
+          >
+            <img
+              src="/avatar.png"
+              alt="Avatar"
+              className="
+                w-full h-full rounded-full
+                object-cover
+                bg-white
+              "
+            />
+          </motion.div>
         </motion.div>
-
       </div>
     </section>
   );
 }
+
 
 
 
