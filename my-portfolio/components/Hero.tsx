@@ -10,7 +10,9 @@ export default function Hero() {
         transition={{ duration: 1 }}
       >
         <h1 className="text-5xl font-bold mb-4">
-          Hi! Welcome To My Profile <br>
+          Hi! Welcome To My Profile
+        </h1>
+        <h1 className="text-5xl font-bold mb-4">
           My Name Is Luu Tan Loc <span className="text-primary">SHIKOFT</span>
         </h1>
         <p className="text-gray-400 text-xl">
@@ -20,6 +22,7 @@ export default function Hero() {
     </section>
   );
 }
+
 
 
 
