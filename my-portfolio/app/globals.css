@@ -6,7 +6,8 @@ body {
   color: white;
 }
 /* === SHOOTING STAR BACKGROUND === */
-.night {
+/* ===== SHOOTING STAR BACKGROUND (FULL SCREEN) ===== */
+.stars-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -14,38 +15,35 @@ body {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
 
-.shooting_star {
+.shooting-star {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 2px;
-  background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
-  border-radius: 999px;
-  filter: drop-shadow(0 0 6px #699bff);
-  animation: tail 3000ms ease-in-out infinite,
-             shooting 3000ms ease-in-out infinite;
-}
-
-.shooting_star::before,
-.shooting_star::after {
-  content: "";
-  position: absolute;
-  top: calc(50% - 1px);
-  right: 0;
+  width: 120px;
   height: 2px;
   background: linear-gradient(
-    -45deg,
-    rgba(0, 0, 255, 0),
-    #5f91ff,
-    rgba(0, 0, 255, 0)
+    90deg,
+    rgba(120, 170, 255, 1),
+    rgba(120, 170, 255, 0)
   );
-  transform: translateX(50%);
-  border-radius: 100%;
-  animation: shining 3000ms ease-in-out infinite;
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px rgba(120, 170, 255, 0.8));
+  animation: shoot 3s linear infinite;
+  transform: rotate(-35deg);
+  opacity: 0;
 }
 
-.shooting_star::after {
-  transform: translateX(50%) rotateZ(-45deg);
+/* animation */
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(-35deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(600px) translateY(600px) rotate(-35deg);
+    opacity: 0;
+  }
 }
 
 /* random positions + delay */
@@ -77,6 +75,7 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(300px); }
 }
+
 
 
 
