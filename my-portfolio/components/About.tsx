@@ -26,20 +26,40 @@ export default function About() {
           </p>
 
           <div className="flex gap-4">
-            {["Facebook", "Youtube", "Tik Tok"].map((item) => (
-              <button
-                key={item}
-                className="
-                  px-5 py-2 rounded-full
-                  border border-primary
-                  text-primary
-                  hover:bg-primary hover:text-black
-                  transition duration-300
-                "
-              >
-                {item}
-              </button>
-            ))}
+            const socials = [
+              {
+                name: "Facebook",
+                url: "https://facebook.com/USERNAME"
+              },
+              {
+                name: "YouTube",
+                url: "https://youtube.com/@USERNAME"
+              },
+              {
+                name: "TikTok",
+                url: "https://tiktok.com/@USERNAME"
+              }
+            ];
+            
+            <div className="flex gap-4">
+              {socials.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    px-5 py-2 rounded-full
+                    border border-primary
+                    text-primary
+                    hover:bg-primary hover:text-black
+                    transition duration-300
+                  "
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -60,4 +80,5 @@ export default function About() {
     </section>
   );
 }
+
 
