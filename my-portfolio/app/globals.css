@@ -12,7 +12,6 @@ body {
   z-index: -1;
   overflow: hidden;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  transform: rotateZ(45deg);
 }
 
 .shooting_star {
@@ -78,5 +77,6 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(300px); }
 }
+
 
 
