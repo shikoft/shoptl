@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 const socials = [
   {
     name: "Facebook",
-    url: "https://facebook.com/USERNAME"
+    url: "https://www.facebook.com/Thu.79.non"
   },
   {
     name: "YouTube",
-    url: "https://youtube.com/@USERNAME"
+    url: "https://www.youtube.com/@HabyssTL"
   },
   {
     name: "TikTok",
-    url: "https://tiktok.com/@USERNAME"
+    url: "https://www.tiktok.com/@shikoliveuwu"
   }
 ];
 
@@ -79,6 +79,7 @@ export default function About() {
     </section>
   );
 }
+
 
 
 
