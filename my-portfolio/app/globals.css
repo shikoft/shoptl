@@ -2,35 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+/* RESET BACKGROUND */
+html,
 body {
+  background: transparent;
   color: white;
 }
 
-/* ===== SHOOTING STAR BACKGROUND ===== */
+/* ===== ADVANCED SHOOTING STAR BACKGROUND ===== */
 .stars-bg {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at bottom,
+    #1b2735 0%,
+    #090a0f 100%
+  );
 }
 
+/* STAR */
 .shooting-star {
   position: absolute;
   width: 140px;
   height: 2px;
   background: linear-gradient(
     90deg,
-    rgba(120, 170, 255, 1),
-    rgba(120, 170, 255, 0)
+    rgba(120, 200, 255, 1),
+    rgba(120, 200, 255, 0)
   );
   border-radius: 999px;
-  filter: drop-shadow(0 0 6px rgba(120, 170, 255, 0.8));
+  filter: drop-shadow(0 0 8px rgba(120, 200, 255, 0.9));
   opacity: 0;
   transform: rotate(-35deg);
-  animation: shoot 3.2s linear infinite;
+  animation: shoot 3.5s linear infinite;
 }
 
+/* ANIMATION */
 @keyframes shoot {
   0% {
     transform: translate(0, 0) rotate(-35deg);
@@ -40,7 +50,15 @@ body {
     opacity: 1;
   }
   100% {
-    transform: translate(700px, 700px) rotate(-35deg);
+    transform: translate(800px, 800px) rotate(-35deg);
     opacity: 0;
+  }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+  .shooting-star {
+    width: 90px;
+    animation-duration: 4.5s;
   }
 }
