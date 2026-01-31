@@ -10,6 +10,21 @@ const works = [
     title: "Project B",
     image: "/product2.png",
     desc: "Creative Video"
+  },
+  {
+    title: "Project C",
+    image: "/product3.png",
+    desc: "Motion Graphics / Visual"
+  },
+  {
+    title: "Project D",
+    image: "/product4.png",
+    desc: "Creative Video"
+  },
+  {
+    title: "Project E",
+    image: "/product5.png",
+    desc: "Game"
   }
 ];
 
@@ -34,3 +49,4 @@ export default function WorksSection() {
     </section>
   );
 }
+
