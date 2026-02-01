@@ -30,9 +30,15 @@ const works = [
 
 export default function WorksSection() {
   return (
-    <section className="py-24 relative">
+    <section
+      id="projects"
+      className="
+        bg-white
+        py-24
+      "
+    >
       {/* TITLE */}
-      <h2 className="text-4xl font-bold text-center text-cyan-400 mb-14">
+      <h2 className="text-4xl font-bold text-center text-cyan-500 mb-14">
         PROJECTS
       </h2>
 
@@ -40,7 +46,7 @@ export default function WorksSection() {
       <div
         className="
           max-w-6xl mx-auto px-6
-          grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+          grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
           gap-10
         "
       >
