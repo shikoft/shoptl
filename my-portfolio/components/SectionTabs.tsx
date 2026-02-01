@@ -12,9 +12,12 @@ export default function SectionTabs() {
 
   const tabStyle = (id: TabId) =>
     `
-      px-10 py-4
+      shrink-0
+      px-4 py-2
+      md:px-10 md:py-4
       rounded-xl
-      font-bold
+      font-semibold md:font-bold
+      text-sm md:text-base
       border-2
       transition-all duration-300
       ${
@@ -35,14 +38,36 @@ export default function SectionTabs() {
       "
     >
       {/* TAB BUTTONS */}
-      <div className="flex justify-center gap-6 mb-16 flex-wrap px-6">
-        <button className={tabStyle("projects")} onClick={() => setActive("projects")}>
+      <div
+        className="
+          flex
+          flex-row
+          justify-start md:justify-center
+          gap-3 md:gap-6
+          mb-16
+          px-4
+          overflow-x-auto
+          whitespace-nowrap
+        "
+      >
+        <button
+          className={tabStyle("projects")}
+          onClick={() => setActive("projects")}
+        >
           PROJECTS
         </button>
-        <button className={tabStyle("tech")} onClick={() => setActive("tech")}>
+
+        <button
+          className={tabStyle("tech")}
+          onClick={() => setActive("tech")}
+        >
           TECH STACK
         </button>
-        <button className={tabStyle("contact")} onClick={() => setActive("contact")}>
+
+        <button
+          className={tabStyle("contact")}
+          onClick={() => setActive("contact")}
+        >
           CONTACT ME
         </button>
       </div>
