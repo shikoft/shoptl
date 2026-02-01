@@ -1,38 +1,87 @@
 "use client";
+
 import { useState } from "react";
 import WorksSection from "./Works/WorksSection";
 import TechStack from "./TechStack";
 import ContactSection from "./ContactSection";
 
-export default function SectionTabs() {
-  const [active, setActive] = useState("projects");
+type TabId = "projects" | "tech" | "contact";
 
-  const tabStyle = (id: string) =>
-    `px-6 py-3 border-2 rounded-xl font-semibold transition
-     ${
-       active === id
-         ? "border-cyan-400 text-cyan-400"
-         : "border-black text-black hover:border-cyan-400 hover:text-cyan-400"
-     }`;
+export default function SectionTabs() {
+  const [active, setActive] = useState<TabId>("projects");
+
+  const tabStyle = (id: TabId) =>
+    `
+      relative px-6 py-3
+      rounded-xl font-semibold
+      border border-cyan-400/40
+      transition-all duration-300
+      ${
+        active === id
+          ? "text-cyan-400 border-cyan-400 scale-105 shadow-[0_0_20px_rgba(34,211,238,0.4)]"
+          : "text-gray-400 hover:text-cyan-300 hover:border-cyan-300"
+      }
+    `;
 
   return (
-    <section className="py-24 bg-white text-black">
-      <div className="flex justify-center gap-6 mb-12">
-        <button className={tabStyle("projects")} onClick={() => setActive("projects")}>
+    <section
+      id="sections"
+      className="
+        relative
+        py-24
+        bg-black
+        text-white
+        overflow-hidden
+      "
+    >
+      {/* TAB BUTTONS */}
+      <div className="flex justify-center gap-6 mb-16 flex-wrap">
+        <button
+          className={tabStyle("projects")}
+          onClick={() => setActive("projects")}
+        >
           PROJECTS
         </button>
-        <button className={tabStyle("tech")} onClick={() => setActive("tech")}>
+
+        <button
+          className={tabStyle("tech")}
+          onClick={() => setActive("tech")}
+        >
           TECH STACK
         </button>
-        <button className={tabStyle("contact")} onClick={() => setActive("contact")}>
+
+        <button
+          className={tabStyle("contact")}
+          onClick={() => setActive("contact")}
+        >
           CONTACT ME
         </button>
       </div>
 
-      <div className="max-w-6xl mx-auto">
-        {active === "projects" && <WorksSection />}
-        {active === "tech" && <TechStack />}
-        {active === "contact" && <ContactSection />}
+      {/* TAB CONTENT */}
+      <div
+        className="
+          max-w-6xl mx-auto px-6
+          transition-all duration-500
+        "
+      >
+        {active === "projects" && (
+          <div className="animate-fade-in">
+            <WorksSection />
+          </div>
+        )}
+
+        {active === "tech" && (
+          <div className="animate-fade-in">
+            <TechStack />
+          </div>
+        )}
+
+        {active === "contact" && (
+          <div className="animate-fade-in">
+            <ContactSection />
+          </div>
+        )}
       </div>
     </section>
   );
