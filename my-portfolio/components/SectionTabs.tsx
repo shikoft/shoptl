@@ -12,52 +12,42 @@ export default function SectionTabs() {
 
   const tabStyle = (id: TabId) =>
     `
-      px-6 py-2
-      rounded-full
+      px-10 py-4
+      rounded-xl
       font-bold
-      text-sm
-      transition-all duration-200
+      border-2
+      transition-all duration-300
       ${
         active === id
-          ? "bg-cyan-400 text-white shadow-md"
-          : "bg-white text-cyan-500 border border-cyan-400 hover:bg-cyan-50"
+          ? "bg-cyan-400 text-white border-cyan-400 shadow-lg"
+          : "bg-white text-cyan-500 border-cyan-400 hover:bg-cyan-50"
       }
     `;
 
   return (
     <section
-      id="projects"
+      id="section-tabs"
       className="
         py-24
         bg-white
         text-black
+        min-h-[70vh]
       "
     >
-      {/* BUTTON TABS */}
-      <div className="flex justify-center gap-4 mb-14">
-        <button
-          className={tabStyle("projects")}
-          onClick={() => setActive("projects")}
-        >
+      {/* TAB BUTTONS */}
+      <div className="flex justify-center gap-6 mb-16 flex-wrap px-6">
+        <button className={tabStyle("projects")} onClick={() => setActive("projects")}>
           PROJECTS
         </button>
-
-        <button
-          className={tabStyle("tech")}
-          onClick={() => setActive("tech")}
-        >
+        <button className={tabStyle("tech")} onClick={() => setActive("tech")}>
           TECH STACK
         </button>
-
-        <button
-          className={tabStyle("contact")}
-          onClick={() => setActive("contact")}
-        >
+        <button className={tabStyle("contact")} onClick={() => setActive("contact")}>
           CONTACT ME
         </button>
       </div>
 
-      {/* CONTENT */}
+      {/* TAB CONTENT */}
       <div className="max-w-6xl mx-auto px-6">
         {active === "projects" && <WorksSection />}
         {active === "tech" && <TechStack />}
@@ -66,4 +56,3 @@ export default function SectionTabs() {
     </section>
   );
 }
-
