@@ -13,28 +13,26 @@ const techs = [
 
 export default function TechStack() {
   return (
-    <section className="py-24 bg-black text-white">
-      <h2 className="text-4xl font-bold text-center text-cyan-400 mb-16">
+    <section
+      id="tech"
+      className="bg-white py-24"
+    >
+      <h2 className="text-4xl font-bold text-center mb-14 text-cyan-500">
         TECH STACK
       </h2>
 
-      <div
-        id="tech"
-        className="
-          max-w-6xl mx-auto px-6
-          grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6
-          gap-8 justify-items-center
-        "
-      >
+      <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 px-6">
         {techs.map((tech) => (
           <div
             key={tech}
             className="
-              w-28 h-28 flex items-center justify-center
-              border-2 border-cyan-400 rounded-xl
-              text-lg font-semibold
-              transition-all duration-300
-              hover:scale-110 hover:bg-cyan-400 hover:text-black
+              border border-black
+              rounded-xl
+              py-10
+              text-center
+              font-semibold
+              hover:bg-black hover:text-white
+              transition
             "
           >
             {tech}
