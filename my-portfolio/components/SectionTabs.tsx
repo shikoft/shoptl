@@ -12,30 +12,29 @@ export default function SectionTabs() {
 
   const tabStyle = (id: TabId) =>
     `
-      relative px-6 py-3
-      rounded-xl font-semibold
-      border border-cyan-400/40
-      transition-all duration-300
+      px-6 py-2
+      rounded-full
+      font-bold
+      text-sm
+      transition-all duration-200
       ${
         active === id
-          ? "text-cyan-400 border-cyan-400 scale-105 shadow-[0_0_20px_rgba(34,211,238,0.4)]"
-          : "text-gray-400 hover:text-cyan-300 hover:border-cyan-300"
+          ? "bg-cyan-400 text-white shadow-md"
+          : "bg-white text-cyan-500 border border-cyan-400 hover:bg-cyan-50"
       }
     `;
 
   return (
     <section
-      id="sections"
+      id="projects"
       className="
-        relative
         py-24
-        bg-black
-        text-white
-        overflow-hidden
+        bg-white
+        text-black
       "
     >
-      {/* TAB BUTTONS */}
-      <div className="flex justify-center gap-6 mb-16 flex-wrap">
+      {/* BUTTON TABS */}
+      <div className="flex justify-center gap-4 mb-14">
         <button
           className={tabStyle("projects")}
           onClick={() => setActive("projects")}
@@ -58,31 +57,13 @@ export default function SectionTabs() {
         </button>
       </div>
 
-      {/* TAB CONTENT */}
-      <div
-        className="
-          max-w-6xl mx-auto px-6
-          transition-all duration-500
-        "
-      >
-        {active === "projects" && (
-          <div className="animate-fade-in">
-            <WorksSection />
-          </div>
-        )}
-
-        {active === "tech" && (
-          <div className="animate-fade-in">
-            <TechStack />
-          </div>
-        )}
-
-        {active === "contact" && (
-          <div className="animate-fade-in">
-            <ContactSection />
-          </div>
-        )}
+      {/* CONTENT */}
+      <div className="max-w-6xl mx-auto px-6">
+        {active === "projects" && <WorksSection />}
+        {active === "tech" && <TechStack />}
+        {active === "contact" && <ContactSection />}
       </div>
     </section>
   );
 }
+
