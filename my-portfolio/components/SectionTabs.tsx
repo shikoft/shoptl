@@ -1,11 +1,14 @@
 "use client";
+
 import { useState } from "react";
-import Works from "./Works";
+import Works from "./Works/WorksSection";
 import TechStack from "./TechStack";
 import Contact from "./Contact";
 
 export default function SectionTabs() {
-  const [active, setActive] = useState("projects");
+  const [active, setActive] = useState<"projects" | "tech" | "contact">(
+    "projects"
+  );
 
   const tabStyle = (id: string) =>
     `px-6 py-3 border-2 rounded-xl font-semibold transition
@@ -17,18 +20,31 @@ export default function SectionTabs() {
 
   return (
     <section className="mt-20">
+      {/* TAB BAR */}
       <div className="flex justify-center gap-6 mb-12">
-        <button className={tabStyle("projects")} onClick={() => setActive("projects")}>
+        <button
+          className={tabStyle("projects")}
+          onClick={() => setActive("projects")}
+        >
           PROJECTS
         </button>
-        <button className={tabStyle("tech")} onClick={() => setActive("tech")}>
+
+        <button
+          className={tabStyle("tech")}
+          onClick={() => setActive("tech")}
+        >
           TECH STACK
         </button>
-        <button className={tabStyle("contact")} onClick={() => setActive("contact")}>
+
+        <button
+          className={tabStyle("contact")}
+          onClick={() => setActive("contact")}
+        >
           CONTACT ME
         </button>
       </div>
 
+      {/* CONTENT */}
       {active === "projects" && <Works />}
       {active === "tech" && <TechStack />}
       {active === "contact" && <Contact />}
