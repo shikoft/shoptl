@@ -6,7 +6,7 @@ export default function Hero() {
       id="home"
       className="
         relative
-        h-[80vh]
+        min-h-screen
         flex items-center justify-center
         text-white
         overflow-hidden
@@ -17,9 +17,10 @@ export default function Hero() {
 
       {/* CONTENT */}
       <div className="relative z-10 text-center px-6">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">
           Hi! Welcome To My Profile
         </h1>
+
         <p className="text-lg md:text-xl">
           My Name Is Luu Tan Loc{" "}
           <span className="text-cyan-400 font-semibold">SHIKOFT</span>
@@ -28,4 +29,3 @@ export default function Hero() {
     </section>
   );
 }
-
