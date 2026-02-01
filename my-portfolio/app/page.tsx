@@ -1,5 +1,5 @@
-import Navbar from "./components/Navbar";
-import Tabs from "./components/Tabs";
+import Navbar from "../components/Navbar";
+import Tabs from "../components/Tabs";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import WorksSection from "../components/Works/WorksSection";
@@ -26,4 +26,5 @@ export default function Home() {
   );
 
 }
+
 
