@@ -30,14 +30,14 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20 bg-white text-black">
+    <section className="max-w-6xl mx-auto px-6 py-20 bg-white text-black overflow-hidden">
       <h2 className="text-4xl font-bold text-center text-cyan-500 mb-14">
         CONTACT ME
       </h2>
 
-      <div className="grid md:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* LEFT INFO */}
-        <div className="flex md:flex-col gap-6 justify-center">
+        <div className="flex flex-col gap-6 items-center md:items-stretch">
           {[
             { icon: "📧", value: "luutanloc39@gmail.com" },
             { icon: "📞", value: "0123 456 789" },
@@ -46,6 +46,7 @@ export default function ContactSection() {
             <div
               key={i}
               className="
+                w-full
                 border border-cyan-400/40
                 rounded-xl px-6 py-5
                 text-center
@@ -55,13 +56,15 @@ export default function ContactSection() {
               "
             >
               <div className="text-3xl mb-2">{item.icon}</div>
-              <p className="text-sm text-gray-600">{item.value}</p>
+              <p className="text-sm text-gray-600 break-words">
+                {item.value}
+              </p>
             </div>
           ))}
         </div>
 
         {/* RIGHT COMMENT */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 w-full">
           <div className="bg-gray-100 rounded-2xl p-6 mb-10">
             <input
               value={name}
@@ -78,7 +81,7 @@ export default function ContactSection() {
             />
             <button
               onClick={handleSend}
-              className="px-8 py-3 rounded-xl bg-cyan-500 text-white font-semibold hover:bg-cyan-600 transition"
+              className="px-8 py-3 rounded-xl bg-cyan-500 text-white font-bold hover:bg-cyan-600 transition"
             >
               Send
             </button>
@@ -95,7 +98,7 @@ export default function ContactSection() {
                     {c.date}
                   </span>
                 </div>
-                <p className="text-gray-700 text-sm">
+                <p className="text-gray-700 text-sm break-words">
                   {c.message}
                 </p>
               </div>
