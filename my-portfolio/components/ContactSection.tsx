@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Github, Phone, MessageCircle } from "lucide-react";
 
 type Comment = {
   name: string;
@@ -10,113 +9,113 @@ type Comment = {
 };
 
 export default function ContactSection() {
+  const [comments, setComments] = useState<Comment[]>([]);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [comments, setComments] = useState<Comment[]>([]);
 
   const handleSend = () => {
     if (!name || !message) return;
 
-    const newComment: Comment = {
-      name,
-      message,
-      date: new Date().toLocaleDateString("vi-VN"),
-    };
+    setComments([
+      {
+        name,
+        message,
+        date: new Date().toLocaleDateString("vi-VN"),
+      },
+      ...comments,
+    ]);
 
-    setComments([newComment, ...comments]);
     setName("");
     setMessage("");
   };
 
   return (
-    <section id="contact" className="py-24 bg-black text-white">
+    <section className="max-w-6xl mx-auto px-6 py-20 text-white">
       <h2 className="text-4xl font-bold text-center text-cyan-400 mb-14">
         CONTACT ME
       </h2>
 
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-
-        {/* LEFT: ICON CONTACT */}
-        <div className="flex flex-col gap-6">
-          <ContactItem icon={<Mail />} text="luutanloc39@gmail.com" />
-          <ContactItem icon={<Github />} text="github.com/ShikoFT" />
-          <ContactItem icon={<Phone />} text="+84 39 xxx xxxx" />
-          <ContactItem icon={<MessageCircle />} text="Discord: shikoft" />
+      <div className="grid md:grid-cols-3 gap-12">
+        {/* LEFT ICON PANEL */}
+        <div className="flex md:flex-col gap-6 justify-center">
+          {[
+            { icon: "📧", label: "Email", value: "luutanloc39S@gmail.com" },
+            { icon: "📞", label: "Phone", value: "0123 456 789" },
+            { icon: "🐙", label: "GitHub", value: "github.com/shikoft" },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="
+                group cursor-pointer
+                border border-cyan-400/40
+                rounded-xl px-6 py-5
+                text-center
+                hover:scale-110
+                hover:border-cyan-400
+                transition-all duration-300
+              "
+            >
+              <div className="text-3xl mb-2">{item.icon}</div>
+              <p className="text-sm text-gray-400 group-hover:text-white">
+                {item.value}
+              </p>
+            </div>
+          ))}
         </div>
 
-        {/* RIGHT: COMMENT */}
-        <div className="bg-dark rounded-2xl p-6 shadow-lg">
-          <h3 className="text-xl font-semibold mb-4 text-cyan-400">
-            Leave a message
-          </h3>
-
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Your name"
-            className="w-full mb-3 px-4 py-2 rounded bg-black border border-gray-700 focus:border-cyan-400 outline-none"
-          />
-
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Your message"
-            rows={4}
-            className="w-full mb-4 px-4 py-2 rounded bg-black border border-gray-700 focus:border-cyan-400 outline-none"
-          />
-
-          <button
-            onClick={handleSend}
-            className="
-              px-6 py-2 rounded-full
-              bg-cyan-400 text-black font-semibold
-              hover:bg-white transition
-            "
-          >
-            Send
-          </button>
+        {/* RIGHT COMMENT AREA */}
+        <div className="md:col-span-2">
+          {/* INPUT */}
+          <div className="bg-black/40 rounded-2xl p-6 mb-10">
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Your name"
+              className="w-full mb-4 px-4 py-3 rounded-lg bg-black border border-cyan-400/30 focus:outline-none focus:border-cyan-400"
+            />
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Your message..."
+              rows={4}
+              className="w-full mb-4 px-4 py-3 rounded-lg bg-black border border-cyan-400/30 focus:outline-none focus:border-cyan-400"
+            />
+            <button
+              onClick={handleSend}
+              className="
+                px-8 py-3 rounded-xl
+                bg-cyan-400 text-black font-semibold
+                hover:bg-white
+                transition
+              "
+            >
+              Send
+            </button>
+          </div>
 
           {/* COMMENTS */}
-          <div className="mt-8 space-y-4 max-h-[300px] overflow-y-auto">
+          <div className="space-y-4 max-h-[360px] overflow-y-auto pr-2">
             {comments.map((c, i) => (
               <div
                 key={i}
-                className="p-4 rounded-xl bg-black/50 border border-gray-700"
+                className="border border-white/10 rounded-xl p-4"
               >
-                <div className="flex justify-between text-sm text-gray-400 mb-1">
-                  <span>{c.name}</span>
-                  <span>{c.date}</span>
+                <div className="flex justify-between mb-1">
+                  <span className="font-semibold text-cyan-400">
+                    {c.name}
+                  </span>
+                  <span className="text-xs text-gray-500">
+                    {c.date}
+                  </span>
                 </div>
-                <p className="text-gray-200">{c.message}</p>
+                <p className="text-gray-300 text-sm">
+                  {c.message}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-/* ===== CONTACT ITEM ===== */
-function ContactItem({
-  icon,
-  text,
-}: {
-  icon: React.ReactNode;
-  text: string;
-}) {
-  return (
-    <div
-      className="
-        flex items-center gap-4
-        p-4 rounded-xl border border-cyan-400/40
-        hover:scale-105 hover:border-cyan-400
-        transition-transform duration-300
-        cursor-pointer
-      "
-    >
-      <div className="text-cyan-400">{icon}</div>
-      <span className="text-white">{text}</span>
-    </div>
   );
 }
