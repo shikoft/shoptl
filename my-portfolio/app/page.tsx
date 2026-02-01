@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       <About />
       {/* <Products /> */}
-      <WorksSection />
+      {/*<WorksSection /> */}
       <SectionTabs />
       <Contact />
       <Footer />
@@ -23,6 +23,7 @@ export default function Home() {
   );
 
 }
+
 
 
 
