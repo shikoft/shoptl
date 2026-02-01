@@ -72,3 +72,20 @@ html, body {
 .shooting-star:nth-child(6) { top: 70%; left: 55%; animation-delay: 0.8s; }
 .shooting-star:nth-child(7) { top: 85%; left: 35%; animation-delay: 1.2s; }
 .shooting-star:nth-child(8) { top: 90%; left: 70%; animation-delay: 2.8s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+
