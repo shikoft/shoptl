@@ -1,11 +1,5 @@
-export type Project = {
-  title: string;
-  slug?: string;          // có => project nội bộ
-  externalLink?: string;  // có => link ngoài
-  image: string;
-  desc: string;
-  content?: string;
-};
+import { Project } from "./type"; // nếu bạn tách type
+// hoặc bỏ dòng này nếu để chung file
 
 export const projects: Project[] = [
   {
@@ -16,41 +10,48 @@ export const projects: Project[] = [
     meta: {
       year: 2024,
       role: "Frontend",
-      tech: ["Next.js", "Tailwind"]
-    }
+      tech: ["Next.js", "Tailwind"],
+    },
     content:
       "This project focuses on clean visual, smooth animation and storytelling.",
   },
+
   {
     title: "Project B",
     externalLink: "https://youtube.com",
     image: "/product2.png",
     desc: "Creative Video",
   },
+
   {
     title: "Project C",
     slug: "project-c",
     image: "/product3.png",
     desc: "Motion Graphics / Visual",
-    content:
-      "A visual project with smooth motion and strong color composition.",
+    meta: {
+      year: 2024,
+      role: "Motion Designer",
+      tech: ["After Effects"],
+    },
+    content: `
+• Role: Motion Designer
+• Tools: After Effects
+• Year: 2024
+    `,
   },
-  title: "Project C",
-    slug: "project-c",
+
+  {
+    title: "Project D",
+    slug: "project-d",
     image: "/product4.png",
-    desc: "Motion Graphics / Visual",
-    content:"
-    - Role: Motion Designer
-    - Tools: After Effects
-    - Year: 2024",
+    desc: "Game / Interactive",
+    content: "A small interactive game project.",
   },
-  title: "Project C",
-    slug: "project-c",
+
+  {
+    title: "Project E",
+    externalLink: "https://example.com",
     image: "/product5.png",
-    desc: "Motion Graphics / Visual",
-    content:
-      "A visual project with smooth motion and strong color composition.",
+    desc: "Visual Experiment",
   },
 ];
-
-
