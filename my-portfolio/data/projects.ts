@@ -18,7 +18,7 @@ export const projects: Project[] = [
 
   {
     title: "Project B",
-    externalLink: "https://youtube.com",
+    externalLink: "https://youtube.com", //link ngoài
     image: "/product2.png",
     desc: "Creative Video",
   },
@@ -50,8 +50,9 @@ export const projects: Project[] = [
 
   {
     title: "Project E",
-    externalLink: "https://example.com",
+    externalLink: "https://example.com", //link ngoài
     image: "/product5.png",
     desc: "Visual Experiment",
   },
 ];
+
