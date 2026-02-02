@@ -1,5 +1,5 @@
 import WorkCard from "./WorkCard";
-import { projects } from "../data/projects";
+import { projects } from "@/data/projects";
 
 export default function WorksSection() {
   return (
@@ -22,3 +22,4 @@ export default function WorksSection() {
     </section>
   );
 }
+
