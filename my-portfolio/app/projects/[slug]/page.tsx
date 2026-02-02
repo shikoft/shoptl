@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { projects } from "../data/projects";
+import { projects } from "@/data/projects";
 
 type Props = {
   params: {
@@ -47,4 +47,5 @@ export default function ProjectDetailPage({ params }: Props) {
     </main>
   );
 }
+
 
