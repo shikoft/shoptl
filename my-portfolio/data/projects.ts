@@ -1,5 +1,17 @@
-import { Project } from "./type"; // nếu bạn tách type
-// hoặc bỏ dòng này nếu để chung file
+//import { Project } from "./type";  tách file riêng thì dùng
+export type Project = {
+  title: string;
+  slug?: string;          // project nội bộ
+  externalLink?: string;  // link ngoài
+  image: string;
+  desc: string;
+  content?: string;
+  meta?: {
+    year?: number;
+    role?: string;
+    tech?: string[];
+  };
+};
 
 export const projects: Project[] = [
   {
@@ -18,7 +30,7 @@ export const projects: Project[] = [
 
   {
     title: "Project B",
-    externalLink: "https://youtube.com", //link ngoài
+    externalLink: "https://youtube.com", // link ngoài
     image: "/product2.png",
     desc: "Creative Video",
   },
@@ -50,9 +62,8 @@ export const projects: Project[] = [
 
   {
     title: "Project E",
-    externalLink: "https://example.com", //link ngoài
+    externalLink: "https://example.com", // link ngoài
     image: "/product5.png",
     desc: "Visual Experiment",
   },
 ];
-
