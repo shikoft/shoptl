@@ -13,6 +13,11 @@ export const projects: Project[] = [
     slug: "project-a",
     image: "/product1.png",
     desc: "Motion Graphics / Visual",
+    meta: {
+      year: 2024,
+      role: "Frontend",
+      tech: ["Next.js", "Tailwind"]
+    }
     content:
       "This project focuses on clean visual, smooth animation and storytelling.",
   },
@@ -47,4 +52,5 @@ export const projects: Project[] = [
       "A visual project with smooth motion and strong color composition.",
   },
 ];
+
 
