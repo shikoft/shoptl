@@ -1,27 +1,33 @@
 export type Project = {
-  id: string;
   title: string;
-  description: string;
+  slug?: string;          // có => project nội bộ
+  externalLink?: string;  // có => link ngoài
   image: string;
-  type: "internal" | "external";
-  link: string;
+  desc: string;
+  content?: string;
 };
 
 export const projects: Project[] = [
   {
-    id: "profile-website",
-    title: "Personal Profile Website",
-    description: "My personal portfolio built with Next.js",
-    image: "/projects/profile.png",
-    type: "internal",
-    link: "/projects/profile-website",
+    title: "Project A",
+    slug: "project-a",
+    image: "/product1.png",
+    desc: "Motion Graphics / Visual",
+    content:
+      "This project focuses on clean visual, smooth animation and storytelling.",
   },
   {
-    id: "youtube-channel",
-    title: "YouTube Motion Channel",
-    description: "My motion graphics channel",
-    image: "/projects/youtube.png",
-    type: "external",
-    link: "https://youtube.com/@shikoft",
+    title: "Project B",
+    externalLink: "https://youtube.com",
+    image: "/product2.png",
+    desc: "Creative Video",
+  },
+  {
+    title: "Project C",
+    slug: "project-c",
+    image: "/product3.png",
+    desc: "Motion Graphics / Visual",
+    content:
+      "A visual project with smooth motion and strong color composition.",
   },
 ];
