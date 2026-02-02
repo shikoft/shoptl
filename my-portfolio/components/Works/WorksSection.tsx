@@ -1,35 +1,5 @@
 import WorkCard from "./WorkCard";
-
-const works = [
-  {
-    title: "Project A",
-    slug: "project-a",
-    image: "/product1.png",
-    desc: "Motion Graphics / Visual",
-    type: "internal",
-  },
-  {
-    title: "Project B",
-    slug: "project-b",
-    image: "/product2.png",
-    desc: "Creative Video",
-    type: "internal",
-  },
-  {
-    title: "Project Link (External)",
-    image: "/product3.png",
-    desc: "Landing Page",
-    type: "external",
-    url: "https://www.facebook.com/Thu.79.non",
-  },
-  {
-    title: "Project D",
-    slug: "project-d",
-    image: "/product4.png",
-    desc: "Creative Video",
-    type: "internal",
-  },
-];
+import { projects } from "../data/projects";
 
 export default function WorksSection() {
   return (
@@ -45,7 +15,7 @@ export default function WorksSection() {
           gap-10
         "
       >
-        {works.map((work, i) => (
+        {projects.map((work, i) => (
           <WorkCard key={i} {...work} />
         ))}
       </div>
