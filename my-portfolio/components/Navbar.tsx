@@ -19,7 +19,12 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between text-white">
-        <span className="font-bold text-cyan-400">SHIKOFT</span>
+        <a 
+          href="/" 
+          className="font-bold text-cyan-400"
+        >
+          SHIKOFT
+        </a>
         <div className="flex gap-6 text-sm">
           <a href="#projects" className="hover:text-cyan-400">Projects</a>
           <a href="#tech" className="hover:text-cyan-400">Tech Stack</a>
