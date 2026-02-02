@@ -30,4 +30,21 @@ export const projects: Project[] = [
     content:
       "A visual project with smooth motion and strong color composition.",
   },
+  title: "Project C",
+    slug: "project-c",
+    image: "/product4.png",
+    desc: "Motion Graphics / Visual",
+    content:"
+    - Role: Motion Designer
+    - Tools: After Effects
+    - Year: 2024",
+  },
+  title: "Project C",
+    slug: "project-c",
+    image: "/product5.png",
+    desc: "Motion Graphics / Visual",
+    content:
+      "A visual project with smooth motion and strong color composition.",
+  },
 ];
+
