@@ -1,33 +1,63 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Comment = {
   name: string;
   message: string;
-  date: string;
+  createdAt: number;
 };
 
 export default function ContactSection() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [sending, setSending] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    const load = async () => {
+      try {
+        const res = await fetch("/api/comments");
+        const data = await res.json();
+        if (mounted) setComments(data.comments ?? []);
+      } catch {
+        if (mounted) setComments([]);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    };
+    load();
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const handleSend = () => {
-    if (!name || !message) return;
+    if (!name || !message || sending) return;
 
-    setComments([
-      {
-        name,
-        message,
-        date: new Date().toLocaleDateString("vi-VN"),
-      },
-      ...comments,
-    ]);
+    const run = async () => {
+      setSending(true);
+      try {
+        const res = await fetch("/api/comments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, message }),
+        });
+        const data = await res.json();
+        if (res.ok && data.comment) {
+          setComments((prev) => [data.comment, ...prev]);
+          setName("");
+          setMessage("");
+        }
+      } finally {
+        setSending(false);
+      }
+    };
 
-    setName("");
-    setMessage("");
+    run();
   };
 
   return (
@@ -114,14 +144,24 @@ export default function ContactSection() {
           </div>
 
           <div className="space-y-4 max-h-[360px] overflow-y-auto pr-2">
+            {loading && (
+              <div className="text-sm text-gray-500">
+                Loading comments...
+              </div>
+            )}
+            {!loading && comments.length === 0 && (
+              <div className="text-sm text-gray-500">
+                No comments yet.
+              </div>
+            )}
             {comments.map((c, i) => (
-              <div key={i} className="border rounded-xl p-4">
+              <div key={`${c.createdAt}-${i}`} className="border rounded-xl p-4">
                 <div className="flex justify-between mb-1">
                   <span className="font-semibold text-cyan-500">
                     {c.name}
                   </span>
                   <span className="text-xs text-gray-400">
-                    {c.date}
+                    {new Date(c.createdAt).toLocaleDateString("vi-VN")}
                   </span>
                 </div>
                 <p className="text-gray-700 text-sm break-words">
