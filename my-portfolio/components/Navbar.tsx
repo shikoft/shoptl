@@ -18,14 +18,14 @@ export default function Navbar() {
           : "bg-transparent"
       } animate-fade-in`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between text-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 h-14 md:h-16 flex items-center justify-between text-white">
         <a 
           href="/" 
-          className="nav-brand font-bold text-cyan-400 text-lg"
+          className="nav-brand font-bold text-cyan-400 text-base md:text-lg"
         >
           SHIKOFT
         </a>
-        <div className="flex gap-6 text-[16px] font-semibold">
+        <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1 text-[13px] md:text-[16px] font-semibold">
           <a href="#projects" className="nav-link">Projects</a>
           <a href="#tech" className="nav-link">Tech Stack</a>
           <a href="#contact" className="nav-link">Contact Me</a>
