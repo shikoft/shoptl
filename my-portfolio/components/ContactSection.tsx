@@ -112,9 +112,9 @@ export default function ContactSection() {
           viewport={{ once: true, amount: 0.4 }}
         >
           {[
-            { icon: "@", value: "luutanloc39@gmail.com" },
-            { icon: "TEL", value: "0123 456 789" },
-            { icon: "GH", value: "github.com/shikoft" },
+            { icon: "✉️", value: "luutanloc39@gmail.com" },
+            { icon: "📠", value: "0123 456 789" },
+            { icon: "GitHub", value: "github.com/shikoft" },
           ].map((item, i) => (
             <div
               key={i}
