@@ -15,16 +15,28 @@ export default function ContactSection() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let mounted = true;
     const load = async () => {
       try {
         const res = await fetch("/api/comments");
-        const data = await res.json();
-        if (mounted) setComments(data.comments ?? []);
-      } catch {
-        if (mounted) setComments([]);
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(data?.error || "Failed to load comments.");
+        }
+        if (mounted) {
+          setComments(data.comments ?? []);
+          setError(null);
+        }
+      } catch (err) {
+        if (mounted) {
+          setComments([]);
+          const message =
+            err instanceof Error ? err.message : "Failed to load comments.";
+          setError(message);
+        }
       } finally {
         if (mounted) setLoading(false);
       }
@@ -36,22 +48,33 @@ export default function ContactSection() {
   }, []);
 
   const handleSend = () => {
-    if (!name || !message || sending) return;
+    const trimmedName = name.trim();
+    const trimmedMessage = message.trim();
+    if (!trimmedName || !trimmedMessage || sending) return;
 
     const run = async () => {
       setSending(true);
+      setError(null);
       try {
         const res = await fetch("/api/comments", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, message }),
+          body: JSON.stringify({
+            name: trimmedName,
+            message: trimmedMessage,
+          }),
         });
-        const data = await res.json();
-        if (res.ok && data.comment) {
-          setComments((prev) => [data.comment, ...prev]);
-          setName("");
-          setMessage("");
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.comment) {
+          throw new Error(data?.error || "Failed to send comment.");
         }
+        setComments((prev) => [data.comment, ...prev]);
+        setName("");
+        setMessage("");
+      } catch (err) {
+        const message =
+          err instanceof Error ? err.message : "Failed to send comment.";
+        setError(message);
       } finally {
         setSending(false);
       }
@@ -122,6 +145,11 @@ export default function ContactSection() {
           viewport={{ once: true, amount: 0.4 }}
         >
           <div className="bg-gray-100 rounded-2xl p-6 mb-10">
+            {error && (
+              <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+                {error}
+              </div>
+            )}
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -137,9 +165,10 @@ export default function ContactSection() {
             />
             <button
               onClick={handleSend}
-              className="px-8 py-3 rounded-xl bg-cyan-500 text-white font-bold hover:bg-cyan-600 transition"
+              disabled={sending}
+              className="px-8 py-3 rounded-xl bg-cyan-500 text-white font-bold hover:bg-cyan-600 transition disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send
+              {sending ? "Sending..." : "Send"}
             </button>
           </div>
 
