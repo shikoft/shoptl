@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ProjectGallery from "@/components/ProjectGallery";
 import { projects } from "@/data/projects";
 
 type Props = {
@@ -16,6 +17,7 @@ export default function ProjectDetailPage({ params }: Props) {
   const heroImage = project.heroImage ?? project.image;
   const overview = project.overview ?? project.content ?? project.desc;
   const highlights = project.highlights ?? [];
+  const stackBreakdown = project.stackBreakdown ?? [];
   const techStack = project.meta?.tech ?? [];
   const infoCards = [
     ...(project.stats ?? []),
@@ -139,22 +141,58 @@ export default function ProjectDetailPage({ params }: Props) {
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200/80">
                 Tech stack
               </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                {techStack.length > 0 ? (
-                  techStack.map((item) => (
+              {stackBreakdown.length > 0 ? (
+                <>
+                  <div className="mt-5 space-y-4">
+                    {stackBreakdown.map((item) => (
+                      <div key={item.name}>
+                        <div className="flex items-center justify-between gap-4 text-sm">
+                          <span className="font-semibold text-white">
+                            {item.name}
+                          </span>
+                          <span className="font-semibold text-cyan-100">
+                            {item.share}
+                          </span>
+                        </div>
+                        <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-white/10">
+                          <div
+                            className="h-full rounded-full bg-[linear-gradient(90deg,#67e8f9_0%,#38bdf8_55%,#a3e635_100%)]"
+                            style={{ width: `${item.percent}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {techStack.length > 0 && (
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      {techStack.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-sm font-semibold text-cyan-100"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ) : techStack.length > 0 ? (
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {techStack.map((item) => (
                     <span
                       key={item}
                       className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-sm font-semibold text-cyan-100"
                     >
                       {item}
                     </span>
-                  ))
-                ) : (
-                  <span className="text-sm text-slate-400">
-                    Tech stack not added yet.
-                  </span>
-                )}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <span className="mt-5 inline-block text-sm text-slate-400">
+                  Tech stack not added yet.
+                </span>
+              )}
             </article>
 
             {highlights.length > 0 && (
@@ -191,43 +229,7 @@ export default function ProjectDetailPage({ params }: Props) {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {gallery.map((item, index) => {
-            const wide = [0, 4, 10, 14].includes(index);
-            const spanClass = wide
-              ? index === 0
-                ? "md:col-span-2"
-                : "xl:col-span-2"
-              : "";
-            const imageClass = wide
-              ? index === 0
-                ? "h-80 md:h-[28rem]"
-                : "h-80 xl:h-[24rem]"
-              : "h-72";
-
-            return (
-              <article
-                key={item.src}
-                className={`project-panel group overflow-hidden rounded-[2rem] ${spanClass}`}
-              >
-                <div className="overflow-hidden border-b border-white/10">
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className={`w-full object-cover transition duration-500 group-hover:scale-[1.03] ${imageClass}`}
-                  />
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">
-                    {item.caption}
-                  </p>
-                </div>
-              </article>
-            );
-          })}
-        </div>
+        <ProjectGallery gallery={gallery} />
       </section>
     </main>
   );
