@@ -187,28 +187,34 @@ export default function ProjectDetailPage({ params }: Props) {
             </h2>
           </div>
           <p className="max-w-2xl text-sm leading-7 text-slate-400">
-            The gallery below shows how the shop keeps a consistent visual identity across landing, catalog, account, payment, and authentication flows.
+            The gallery below uses all captured screenshots to show how the shop keeps a consistent visual identity across landing, catalog, account, payment, admin, and authentication flows.
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {gallery.map((item, index) => {
-            const featured = index === 0;
+            const wide = [0, 4, 10, 14].includes(index);
+            const spanClass = wide
+              ? index === 0
+                ? "md:col-span-2"
+                : "xl:col-span-2"
+              : "";
+            const imageClass = wide
+              ? index === 0
+                ? "h-80 md:h-[28rem]"
+                : "h-80 xl:h-[24rem]"
+              : "h-72";
 
             return (
               <article
                 key={item.src}
-                className={`project-panel group overflow-hidden rounded-[2rem] ${
-                  featured ? "md:col-span-2" : ""
-                }`}
+                className={`project-panel group overflow-hidden rounded-[2rem] ${spanClass}`}
               >
                 <div className="overflow-hidden border-b border-white/10">
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className={`w-full object-cover transition duration-500 group-hover:scale-[1.03] ${
-                      featured ? "h-80 md:h-[28rem]" : "h-72"
-                    }`}
+                    className={`w-full object-cover transition duration-500 group-hover:scale-[1.03] ${imageClass}`}
                   />
                 </div>
 
