@@ -10,6 +10,12 @@ export type ProjectStat = {
   value: string;
 };
 
+export type ProjectStackItem = {
+  name: string;
+  share: string;
+  percent: number;
+};
+
 export type Project = {
   title: string;
   slug?: string;
@@ -17,11 +23,13 @@ export type Project = {
   image: string;
   heroImage?: string;
   desc: string;
+  publishedAt?: string;
   content?: string;
   overview?: string;
   highlights?: string[];
   gallery?: ProjectGalleryItem[];
   stats?: ProjectStat[];
+  stackBreakdown?: ProjectStackItem[];
   meta?: {
     year?: number;
     role?: string;
@@ -36,17 +44,24 @@ export const projects: Project[] = [
     image: "/web-shop-gallery/shot-02.png",
     heroImage: "/web-shop-gallery/shot-01.png",
     desc: "Mini e-commerce website",
+    publishedAt: "2026-04-11",
     overview:
       "A mini web shop project focused on product presentation, service ordering, account management, payment support, and branded authentication flows.",
     meta: {
       year: 2026,
       role: "Frontend",
-      tech: ["Next.js", "Tailwind CSS", "Responsive UI"],
+      tech: ["JavaScript", "CSS", "EJS", "Other"],
     },
     stats: [
       { label: "Project type", value: "Mini web shop" },
       { label: "UI focus", value: "Game-themed storefront" },
       { label: "Captured screens", value: "17 screenshots" },
+    ],
+    stackBreakdown: [
+      { name: "JavaScript", share: "89.5%", percent: 89.5 },
+      { name: "CSS", share: "6.6%", percent: 6.6 },
+      { name: "EJS", share: "3.4%", percent: 3.4 },
+      { name: "Other", share: "0.5%", percent: 0.5 },
     ],
     highlights: [
       "Landing page with a themed hero section, navigation, and quick links to core areas.",
