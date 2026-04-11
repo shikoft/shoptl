@@ -15,17 +15,17 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Project A",
-    slug: "project-a",
-    image: "/product1.png",
-    desc: "Motion Graphics / Visual",
+    title: "web shop",
+    slug: "web-shop",
+    image: "/web-shop.png",
+    desc: "Mini e-commerce website",
     meta: {
-      year: 2024,
+      year: 2026,
       role: "Frontend",
-      tech: ["Next.js", "Tailwind"],
+      tech: ["Next.js", "Tailwind CSS"],
     },
     content:
-      "This project focuses on clean visual, smooth animation and storytelling.",
+      "A mini web shop project with product categories, service cards, and a custom storefront interface.",
   },
 
   {
