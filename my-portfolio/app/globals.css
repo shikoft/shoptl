@@ -211,4 +211,34 @@ html, body {
   z-index: 2;
 }
 
+.project-page-bg {
+  background:
+    radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), transparent 30%),
+    radial-gradient(circle at 85% 12%, rgba(251, 191, 36, 0.12), transparent 20%),
+    linear-gradient(180deg, #040913 0%, #07111f 48%, #050b14 100%);
+}
+
+.project-page-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.18));
+  -webkit-mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.18));
+}
+
+.project-panel {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.86) 0%, rgba(7, 14, 28, 0.82) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 24px 80px rgba(2, 8, 23, 0.35);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.project-glow {
+  box-shadow:
+    0 0 0 1px rgba(34, 211, 238, 0.15),
+    0 30px 80px rgba(8, 145, 178, 0.18);
+}
+
 
