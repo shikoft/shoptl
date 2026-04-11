@@ -14,6 +14,13 @@ export default function ProjectDetailPage({ params }: Props) {
 
   if (!project) return notFound();
 
+  const publishedDate = project.publishedAt
+    ? new Intl.DateTimeFormat("vi-VN", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      }).format(new Date(project.publishedAt))
+    : null;
   const heroImage = project.heroImage ?? project.image;
   const overview = project.overview ?? project.content ?? project.desc;
   const highlights = project.highlights ?? [];
@@ -25,6 +32,9 @@ export default function ProjectDetailPage({ params }: Props) {
       ? [{ label: "Year", value: String(project.meta.year) }]
       : []),
     ...(project.meta?.role ? [{ label: "Role", value: project.meta.role }] : []),
+    ...(publishedDate
+      ? [{ label: "Published", value: publishedDate }]
+      : []),
   ];
   const gallery =
     project.gallery && project.gallery.length > 0
@@ -58,6 +68,12 @@ export default function ProjectDetailPage({ params }: Props) {
               <p className="mt-4 text-lg text-cyan-100/90 md:text-xl">
                 {project.desc}
               </p>
+
+              {publishedDate && (
+                <p className="mt-4 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200">
+                  Ngay dang: {publishedDate}
+                </p>
+              )}
 
               <p className="mt-6 max-w-xl text-base leading-8 text-slate-300">
                 {overview}
