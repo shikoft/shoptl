@@ -20,6 +20,7 @@ export type Project = {
   title: string;
   slug?: string;
   externalLink?: string;
+  directLink?: string;
   embedUrl?: string;
   image: string;
   heroImage?: string;
@@ -209,8 +210,7 @@ export const projects: Project[] = [
   },
   {
     title: "Happy Birthday",
-    slug: "happy-birthday",
-    embedUrl: "/happy-birthday/index.html",
+    directLink: "/happy-birthday/index.html",
     image: "/happy-birthday/images/photo-03.jpg",
     heroImage: "/happy-birthday/images/photo-04.jpg",
     desc: "Interactive birthday scrapbook",
