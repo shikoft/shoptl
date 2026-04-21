@@ -44,14 +44,17 @@ export default function WorksSection() {
         {projects.map((project, i) => {
           const href = project.externalLink
             ? project.externalLink
-            : project.slug
+            : project.directLink
+              ? project.directLink
+              : project.slug
               ? `/projects/${project.slug}`
               : undefined;
           const external = Boolean(project.externalLink);
+          const direct = Boolean(project.directLink);
 
           return (
             <motion.div
-              key={project.slug ?? project.title ?? i}
+              key={project.slug ?? project.directLink ?? project.title ?? i}
               variants={itemVariants}
             >
               <WorkCard
@@ -60,6 +63,7 @@ export default function WorksSection() {
                 desc={project.desc}
                 href={href}
                 external={external}
+                direct={direct}
               />
             </motion.div>
           );
