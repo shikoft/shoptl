@@ -8,6 +8,7 @@ type Props = {
   desc: string;
   href?: string;
   external?: boolean;
+  direct?: boolean;
 };
 
 export default function WorkCard({
@@ -16,7 +17,10 @@ export default function WorkCard({
   desc,
   href,
   external = false,
+  direct = false,
 }: Props) {
+  const actionLabel = direct ? "Open HTML" : "View more";
+
   const Card = (
     <motion.div
       whileHover={{ scale: 1.03 }}
@@ -38,7 +42,7 @@ export default function WorkCard({
         <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
         <p className="text-graysoft text-sm mb-4">{desc}</p>
         <span className="px-6 py-2 rounded-full bg-primary text-black font-semibold">
-          View more
+          {actionLabel}
         </span>
       </div>
 
@@ -47,13 +51,17 @@ export default function WorkCard({
         <h3 className="text-lg font-bold mb-1">{title}</h3>
         <p className="text-gray-500 text-sm mb-4">{desc}</p>
         <span className="px-5 py-2 rounded-full bg-primary text-black font-semibold">
-          View more
+          {actionLabel}
         </span>
       </div>
     </motion.div>
   );
 
   if (!href) return Card;
+
+  if (direct) {
+    return <a href={href}>{Card}</a>;
+  }
 
   if (external) {
     return (
