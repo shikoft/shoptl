@@ -1044,6 +1044,22 @@ Happy Birthday DG LINH! 🎉✨`;
       }
     }
 
+    function escapeHTML(text){
+      return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function formatWishMessage(text){
+      return escapeHTML(text).replace(
+        /\bDG\s+(LINH|850)\b/g,
+        '<strong class="dg-highlight">DG $1</strong>'
+      );
+    }
+
     function maybeStartTypewriter(){
       const typeEl = document.getElementById("typewriter-text");
       if(!typeEl) return;
@@ -1053,14 +1069,18 @@ Happy Birthday DG LINH! 🎉✨`;
       if(typeEl.dataset.done === "true") return;
 
       typeEl.innerHTML = "";
+      const scrollBox = typeEl.closest(".message-box");
       let i = 0;
       function type(){
         if(i < wishMessage.length){
           typeEl.textContent += wishMessage.charAt(i);
           i++;
-          setTimeout(type, 26);
+          if(scrollBox) scrollBox.scrollTop = scrollBox.scrollHeight;
+          setTimeout(type, 12);
         }else{
+          typeEl.innerHTML = formatWishMessage(wishMessage);
           typeEl.dataset.done = "true";
+          if(scrollBox) scrollBox.scrollTop = 0;
         }
       }
       type();
