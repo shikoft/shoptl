@@ -20,12 +20,17 @@ export type Project = {
   title: string;
   slug?: string;
   externalLink?: string;
+  embedUrl?: string;
   image: string;
   heroImage?: string;
   desc: string;
   publishedAt?: string;
   content?: string;
   overview?: string;
+  storyTitle?: string;
+  storyDetails?: string;
+  designDirection?: string;
+  galleryIntro?: string;
   highlights?: string[];
   gallery?: ProjectGalleryItem[];
   stats?: ProjectStat[];
@@ -47,6 +52,13 @@ export const projects: Project[] = [
     publishedAt: "2026-04-11",
     overview:
       "A mini web shop project focused on product presentation, service ordering, account management, payment support, and branded authentication flows.",
+    storyTitle: "Built as a full mini-shop experience",
+    storyDetails:
+      "Instead of showing only a homepage, this case study highlights the important screens that make the project feel complete: browsing products, ordering services, handling account actions, and supporting login or recovery flows.",
+    designDirection:
+      "Dark storefront styling, strong image-driven sections, and compact form layouts to keep the shop experience focused.",
+    galleryIntro:
+      "The gallery below uses all captured screenshots to show how the shop keeps a consistent visual identity across landing, catalog, account, payment, admin, and authentication flows.",
     meta: {
       year: 2026,
       role: "Frontend",
@@ -196,10 +208,90 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "Project B",
-    externalLink: "https://youtube.com",
-    image: "/product2.png",
-    desc: "Creative Video",
+    title: "Happy Birthday",
+    slug: "happy-birthday",
+    embedUrl: "/happy-birthday/index.html",
+    image: "/happy-birthday/images/photo-03.jpg",
+    heroImage: "/happy-birthday/images/photo-04.jpg",
+    desc: "Interactive birthday scrapbook",
+    publishedAt: "2026-04-21",
+    overview:
+      "A cute interactive birthday page built from a standalone scrapbook HTML file, converted into an isolated portfolio project so its animation, canvas effects, and styles do not conflict with the main website.",
+    storyTitle: "A birthday gift as an interactive scrapbook",
+    storyDetails:
+      "The original standalone HTML is kept inside an iframe preview. That isolation lets the scrapbook keep its own full-screen layout, intro overlay, cake animation, notebook pages, confetti, and floating effects without leaking CSS or JavaScript into the portfolio.",
+    designDirection:
+      "Soft pink scrapbook styling, animated cake scene, polaroid photo pages, floating decorations, and a warm birthday message.",
+    galleryIntro:
+      "These are the 8 images from the ZIP file, also used inside the scrapbook pages as the replacement photos.",
+    meta: {
+      year: 2026,
+      role: "Frontend",
+      tech: ["HTML", "CSS", "JavaScript"],
+    },
+    stats: [
+      { label: "Project type", value: "Birthday scrapbook" },
+      { label: "Format", value: "Isolated HTML iframe" },
+      { label: "Photos", value: "8 images" },
+    ],
+    highlights: [
+      "Standalone birthday HTML converted into a portfolio-safe embedded project.",
+      "All 8 ZIP images copied into the project and inserted into the scrapbook photo array.",
+      "Interactive intro, cake screen, notebook pages, confetti canvas, and animated floaters preserved.",
+      "The scrapbook runs inside an iframe to prevent global CSS and JavaScript conflicts.",
+    ],
+    content:
+      "This project turns a custom birthday scrapbook HTML page into a clean portfolio project. The scrapbook keeps its original interactive feeling while the portfolio page wraps it with project information, published date, tech stack, and a separate image gallery.",
+    gallery: [
+      {
+        src: "/happy-birthday/images/photo-01.jpg",
+        alt: "Birthday scrapbook photo 1",
+        title: "Scrapbook photo 01",
+        caption: "The first image inserted into the birthday scrapbook.",
+      },
+      {
+        src: "/happy-birthday/images/photo-02.jpg",
+        alt: "Birthday scrapbook photo 2",
+        title: "Scrapbook photo 02",
+        caption: "The second image used as a polaroid memory page.",
+      },
+      {
+        src: "/happy-birthday/images/photo-03.jpg",
+        alt: "Birthday scrapbook photo 3",
+        title: "Scrapbook photo 03",
+        caption: "The third image placed inside the first photo spread.",
+      },
+      {
+        src: "/happy-birthday/images/photo-04.jpg",
+        alt: "Birthday scrapbook photo 4",
+        title: "Scrapbook photo 04",
+        caption: "The fourth image used for the birthday scrapbook gallery.",
+      },
+      {
+        src: "/happy-birthday/images/photo-05.jpg",
+        alt: "Birthday scrapbook photo 5",
+        title: "Scrapbook photo 05",
+        caption: "The fifth image inserted into the second photo spread.",
+      },
+      {
+        src: "/happy-birthday/images/photo-06.jpg",
+        alt: "Birthday scrapbook photo 6",
+        title: "Scrapbook photo 06",
+        caption: "The sixth image used as one of the scrapbook memories.",
+      },
+      {
+        src: "/happy-birthday/images/photo-07.jpg",
+        alt: "Birthday scrapbook photo 7",
+        title: "Scrapbook photo 07",
+        caption: "The seventh image added to complete the photo set.",
+      },
+      {
+        src: "/happy-birthday/images/photo-08.jpg",
+        alt: "Birthday scrapbook photo 8",
+        title: "Scrapbook photo 08",
+        caption: "The eighth image used in the birthday scrapbook.",
+      },
+    ],
   },
   {
     title: "Project C",
