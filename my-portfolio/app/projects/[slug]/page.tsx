@@ -26,6 +26,14 @@ export default function ProjectDetailPage({ params }: Props) {
   const highlights = project.highlights ?? [];
   const stackBreakdown = project.stackBreakdown ?? [];
   const techStack = project.meta?.tech ?? [];
+  const storyTitle = project.storyTitle ?? "Project overview";
+  const storyDetails = project.storyDetails;
+  const designDirection =
+    project.designDirection ??
+    "A focused visual direction built around the project's core interface and interaction goals.";
+  const galleryIntro =
+    project.galleryIntro ??
+    "The gallery below shows the main visual materials and screens from this project.";
   const infoCards = [
     ...(project.stats ?? []),
     ...(project.meta?.year
@@ -71,7 +79,7 @@ export default function ProjectDetailPage({ params }: Props) {
 
               {publishedDate && (
                 <p className="mt-4 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200">
-                  Ngay dang: {publishedDate}
+                  Ngày đăng: {publishedDate}
                 </p>
               )}
 
@@ -127,7 +135,7 @@ export default function ProjectDetailPage({ params }: Props) {
                   Design direction
                 </p>
                 <p className="mt-3 text-sm leading-7 text-slate-300">
-                  Dark storefront styling, strong image-driven sections, and compact form layouts to keep the shop experience focused.
+                  {designDirection}
                 </p>
               </div>
             </div>
@@ -142,14 +150,16 @@ export default function ProjectDetailPage({ params }: Props) {
               Project story
             </p>
             <h2 className="mt-4 text-3xl font-bold text-white">
-              Built as a full mini-shop experience
+              {storyTitle}
             </h2>
             <p className="mt-6 text-base leading-8 text-slate-300">
               {project.content ?? overview}
             </p>
-            <p className="mt-6 text-base leading-8 text-slate-300">
-              Instead of showing only a homepage, this case study highlights the important screens that make the project feel complete: browsing products, ordering services, handling account actions, and supporting login or recovery flows.
-            </p>
+            {storyDetails && (
+              <p className="mt-6 text-base leading-8 text-slate-300">
+                {storyDetails}
+              </p>
+            )}
           </article>
 
           <div className="space-y-8">
@@ -230,6 +240,33 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
+      {project.embedUrl && (
+        <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
+          <div className="project-panel overflow-hidden rounded-[2rem] p-4 md:p-6">
+            <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-200/80">
+                  Interactive preview
+                </p>
+                <h2 className="mt-3 text-3xl font-bold text-white">
+                  Open the birthday scrapbook
+                </h2>
+              </div>
+              <p className="max-w-2xl text-sm leading-7 text-slate-400">
+                This preview is loaded from the converted HTML file in an iframe so its full-screen CSS, canvas animation, and inline JavaScript stay isolated from the portfolio.
+              </p>
+            </div>
+
+            <iframe
+              src={project.embedUrl}
+              title={`${project.title} interactive preview`}
+              className="h-[760px] w-full rounded-[1.5rem] border border-white/10 bg-white"
+              sandbox="allow-scripts allow-same-origin"
+            />
+          </div>
+        </section>
+      )}
+
       <section className="mx-auto max-w-7xl px-6 pb-24 lg:px-8">
         <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
@@ -241,7 +278,7 @@ export default function ProjectDetailPage({ params }: Props) {
             </h2>
           </div>
           <p className="max-w-2xl text-sm leading-7 text-slate-400">
-            The gallery below uses all captured screenshots to show how the shop keeps a consistent visual identity across landing, catalog, account, payment, admin, and authentication flows.
+            {galleryIntro}
           </p>
         </div>
 
